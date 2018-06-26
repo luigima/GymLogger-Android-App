@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: should use FrameLayout or RelativeLayout for parent of the "@id/container" view (for Android 2.3 compatibility) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/commonListItemStyle"
+    android:id="@+id/container_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_small_height"
+    android:background="@drawable/bg_swipe_item_neutral">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <FrameLayout
+            android:id="@+id/container_normal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/drag_handle"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="top|left"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:src="@drawable/ic_drag_handle_white_24dp"
+                android:contentDescription="@string/drag_and_drop_indicator" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/strSplitTitle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="top|left"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:gravity="center_vertical"
+                    tools:ignore="RtlHardcoded"
+                    android:text="{exercise_title}"/>
+
+                <TextView
+                    android:id="@+id/strSetsRepeations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="3 x 12"
+                    android:layout_weight="0.11"
+                    android:layout_marginRight="24dp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/container_add"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@id/strSplitTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="48dp"
+                android:layout_marginRight="48dp"
+                android:drawableLeft="@drawable/ic_add_black_24dp"
+                tools:ignore="RtlHardcoded"
+                android:text="Add Exercise"
+                android:gravity="center_vertical" />
+        </FrameLayout>
+    </FrameLayout>
+</FrameLayout>

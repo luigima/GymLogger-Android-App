@@ -1,0 +1,28 @@
+#
+# Build configuration for Circle CI
+#
+machine:
+    java:
+        version: oraclejdk8
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+    cache_directories:
+        - ~/.android
+        - ~/android
+    pre:
+        - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-25
+        - echo y | android update sdk --no-ui --all --filter build-tools-25.0.2
+        - chmod +x gradlew
+
+test:
+    override:
+        - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies || true
+        - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
+        # gradle is flaky in CI envs, found a solution here http://stackoverflow.com/questions/28409608/gradle-assembledebug-and-predexdebug-fail-with-circleci
+        - TERM=dumb ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew testDebugUnitTest -PpreDexEnable=false -Pcom.android.build.threadPoolSize=1 -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms512m -Xmx512m" -Dorg.gradle.daemon=false
+
+    post:
+        - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        - find . -type f -regex "**/test-results/debug/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;

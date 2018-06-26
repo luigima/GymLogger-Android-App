@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">GymLogger</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="nav_routines">Routines</string>
+    <string name="nav_current_workout">Your Workout</string>
+    <string name="nav_workout_log">Workout Log</string>
+    <string name="nav_exercises">Exercises</string>
+    <string name="nav_tracker">Tracker</string>
+    <string name="nav_statistics">Statistics</string>
+
+
+    <string name="muscles">Muscles</string>
+    <string name="splits">Splits</string>
+    <string name="last_trained">Last</string>
+    <string name="amount_exercises">Exercises</string>
+    <string name="duration">Duration</string>
+    <string name="amount_trained">Trained</string>
+    <string name="next">Next</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="add_splits">Add Splits</string>
+
+
+    <string name="new_routine">New Routine</string>
+    <string name="no_splits">No Splits!</string>
+    <string name="title_activity_active_workout">ActiveWorkoutActivity</string>
+    <string name="finish_workout">Finish Workout</string>
+
+    <!-- image contentDescription -->
+    <string name="shows_the_exercise">Shows the exercise</string>
+    <string name="arrow_to_the_right">arrow to the right</string>
+    <string name="musclemap">musclemap</string>
+    <string name="drag_and_drop_indicator">drag and drop indicator</string>
+    <string name="profile_avatar">profile avatar</string>
+    <string name="expandable_indicator">expandable indicator</string>
+    <string name="hello_blank_fragment">Lie on a flat bench with your feet flat on the floor, keep your back flat on the bench.   Grasp the bar a little wider than shoulder width apart.  Raise the barbell above your body and move it over the middle of your chest, this is your starting position.  Lower the bar down so it just touches your chest.  Raise the bar till your arms are fully extended and your elbows are locked.  Return to starting position.</string>
+    <string name="equipment">Equipment</string>
+    <string name="divider">divider</string>
+    <string name="set">Set</string>
+    <string name="previous">Previous</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Search...</string>
+    <!-- -->
+
+
+</resources>

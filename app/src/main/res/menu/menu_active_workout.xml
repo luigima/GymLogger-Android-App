@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.workout.ActiveWorkoutActivity">
+    <item
+        android:id="@+id/finish_workout"
+        android:orderInCategory="100"
+        android:title="@string/finish_workout"
+        app:showAsAction="never" />
+</menu>

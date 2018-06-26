@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.jakewharton.hugo'
+
+// Manifest version information!
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 0 // bump for dogfood builds, public betas, etc.
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.luigima.gymlogger"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    final SUPPORT_LIBRARY_VERSION = '25.1.0'
+    final RETROFIT_VERSION = '2.0.0-beta2'
+    final DAGGER_VERSION = '2.0.2'
+    final DEXMAKER_VERSION = '1.4'
+    final HAMCREST_VERSION = '1.3'
+    final ESPRESSO_VERSION = '2.2.1'
+    final RUNNER_VERSION = '0.4'
+
+    def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    def jUnit = "junit:junit:4.12"
+    def mockito = "org.mockito:mockito-core:1.10.19"
+    def storio = "com.pushtorefresh.storio:sqlite-annotations-processor:1.6.0"
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided 'org.glassfish:javax.annotation:10.0-b28' //needed to resolve compilation errors
+
+    // Unit tests dependencies
+    testCompile jUnit
+    testCompile mockito
+    testCompile "org.hamcrest:hamcrest-core:$HAMCREST_VERSION"
+    testCompile "org.hamcrest:hamcrest-library:$HAMCREST_VERSION"
+    testCompile "org.hamcrest:hamcrest-integration:$HAMCREST_VERSION"
+    testCompile 'org.robolectric:robolectric:3.2.2'
+
+    // Instrumentation test dependencies
+    androidTestCompile jUnit
+    androidTestCompile mockito
+    androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
+    androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
+    androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
+    androidTestCompile "com.crittercism.dexmaker:dexmaker:$DEXMAKER_VERSION"
+    androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:$DEXMAKER_VERSION"
+    androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
+
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    compile "com.squareup.retrofit:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit:adapter-rxjava:$RETROFIT_VERSION"
+    compile('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.8.4@aar') {
+        transitive = true
+    }
+    compile 'com.facebook.stetho:stetho:1.4.2'
+
+    apt daggerCompiler
+    apt storio
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
+    compile 'io.reactivex:rxjava:1.2.5'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.pushtorefresh.storio:sqlite:1.12.2'
+    compile 'com.pushtorefresh.storio:sqlite-annotations:1.12.2'
+    compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'com.commit451:elasticdragdismisslayout:1.0.2'
+
+    compile files('debug-libs/sqlscout-server-1.0.jar')
+}

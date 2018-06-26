@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_current_workout" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/nav_current_workout" />
+        <item android:id="@+id/nav_workouts" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/nav_routines" />
+        <item android:id="@+id/nav_workout_log" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/nav_workout_log" />
+        <item android:id="@+id/nav_exercises" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_exercises" />
+        <item android:id="@+id/nav_tracker" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_tracker" />
+        <item android:id="@+id/nav_statistics" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_statistics" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
+                android:title="Share" />
+            <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
+                android:title="Rate" />
+        </menu>
+    </item>
+
+</menu>
